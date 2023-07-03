@@ -7,14 +7,16 @@ defmodule PlugRuntime.Mixfile do
   """
 
   def project do
-    [app: :plug_runtime,
-     version: "1.0.0",
-     elixir: "~> 1.2",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     description: @description,
-     package: package,
-     deps: deps]
+    [
+      app: :plug_runtime,
+      version: "1.0.0",
+      elixir: "~> 1.2",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      description: @description,
+      package: package(),
+      deps: deps()
+    ]
   end
 
   # Configuration for the OTP application
@@ -38,9 +40,13 @@ defmodule PlugRuntime.Mixfile do
   end
 
   defp package do
-    [ maintainers: ["Mike Evans"],
+    [
+      maintainers: ["Mike Evans"],
       licenses: ["Apache 2.0"],
-      links: %{"GitHub" => "https://github.com/mje113/plug_runtime",
-              "Docs" => "http://mje113.github.io/plug_runtime/"}]
+      links: %{
+        "GitHub" => "https://github.com/mje113/plug_runtime",
+        "Docs" => "http://mje113.github.io/plug_runtime/"
+      }
+    ]
   end
 end
