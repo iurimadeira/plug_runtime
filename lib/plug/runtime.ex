@@ -10,11 +10,11 @@ defmodule Plug.Runtime do
     before_time = time()
 
     conn
-    |> register_before_send( &set_runtime_header(&1, before_time) )
+    |> register_before_send(&set_runtime_header(&1, before_time))
   end
 
   defp set_runtime_header(conn, before_time) do
-    diff = time - before_time
+    diff = time() - before_time
 
     conn
     |> put_resp_header("x-runtime", formatted_diff(diff))
